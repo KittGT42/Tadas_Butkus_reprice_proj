@@ -143,7 +143,7 @@ async def calculate_new_percentage(target_price: float, product_data: ProductDat
             if country_code == 'FI':
                 needed_percent += 5
 
-        pigu_mok_15pr = target_price * 0.15
+        pigu_mok_15pr = target_price * 0.16
 
         # Calculate profit with new percentage
         new_stock_price = product_data.best_price * (needed_percent / 100)
@@ -152,8 +152,7 @@ async def calculate_new_percentage(target_price: float, product_data: ProductDat
                      pigu_mok_15pr
 
         if new_profit > 1:
-            return f"{needed_percent:.2f}%".replace('.', ',')
-            # return f"{needed_percent / 100:.4f}".replace('.', ',')
+            return needed_percent / 100
 
         return None
 

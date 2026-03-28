@@ -10,7 +10,7 @@ SERVICE_ACCOUNT_FILE = 'secret-argon-475512-m8-8096c91d74fc.json'
 # Google Spreadsheet ID (can be found in the spreadsheet URL)
 SPREADSHEET_ID = '1gCBJ4SKtxw6YY5XTOrWjv2GJ4cZj9Drl7AjUvQycpBE'
 
-SHEET_NAME = 'Sheet1'
+SHEET_NAME = 'Copy of New'
 RANGE_NAME = f'{SHEET_NAME}!A3:BQ'
 
 
@@ -41,18 +41,18 @@ def get_data_from_sheet():
             'skip_product': 3,
             'product_amount': 7,
             'country_data': {
-                'LT': {'price': 21, 'stock_price': 20, 'best_price': 18,
-                       'carriage_rate': 23, 'amfonix_reception_transportation': 24,
-                       'cheap_fix_without_VAT': 27, 'percent': 19, 'profit': 29},
-                'FI': {'price': 36, 'stock_price': 35, 'best_price': 33,
-                       'carriage_rate': 38, 'amfonix_reception_transportation': 39,
-                       'cheap_fix_without_VAT': 42, 'percent': 34, 'profit': 44},
-                'LV': {'price': 51, 'stock_price': 50, 'best_price': 48,
-                       'carriage_rate': 53, 'amfonix_reception_transportation': 54,
-                       'cheap_fix_without_VAT': 57, 'percent': 49, 'profit': 59},
-                'EE': {'price': 64, 'stock_price': 63, 'best_price': 61,
-                       'carriage_rate': 66, 'amfonix_reception_transportation': 66,
-                       'cheap_fix_without_VAT': 66, 'percent': 62, 'profit': 68}
+                'LT': {'price': 23, 'stock_price': 22, 'best_price': 20,
+                       'carriage_rate': 25, 'amfonix_reception_transportation': 26,
+                       'cheap_fix_without_VAT': 29, 'percent': 21, 'profit': 31},
+                'FI': {'price': 38, 'stock_price': 37, 'best_price': 35,
+                       'carriage_rate': 40, 'amfonix_reception_transportation': 41,
+                       'cheap_fix_without_VAT': 44, 'percent': 36, 'profit': 46},
+                'LV': {'price': 53, 'stock_price': 52, 'best_price': 50,
+                       'carriage_rate': 55, 'amfonix_reception_transportation': 56,
+                       'cheap_fix_without_VAT': 59, 'percent': 51, 'profit': 61},
+                'EE': {'price': 66, 'stock_price': 65, 'best_price': 63,
+                       'carriage_rate': 68, 'amfonix_reception_transportation': 68,
+                       'cheap_fix_without_VAT': 68, 'percent': 64, 'profit': 70}
             }
         }
 
@@ -125,13 +125,13 @@ def batch_update_data(updates: List[Dict]) -> bool:
 
             batch_data.append({
                 'range':  f'Sheet1!{column}{row_number}',
-                'values': [[str(update['new_percent'])]]
+                'values': [[update['new_percent']]]
             })
 
         # Execute batch update
         if batch_data:
             body = {
-                'valueInputOption': 'USER_ENTERED',
+                'valueInputOption': 'RAW',
                 'data': batch_data
             }
 
